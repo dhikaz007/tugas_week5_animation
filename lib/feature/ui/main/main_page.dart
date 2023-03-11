@@ -9,7 +9,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Main Menu')),
-      body: const MenuPage(),
+      // Halaman awal yang ditampilkan
+      body: const SafeArea(child: MenuPage()),
     );
   }
 }

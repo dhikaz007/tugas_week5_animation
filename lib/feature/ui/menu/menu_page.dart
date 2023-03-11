@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../data/model/list_icon_data.dart';
+import '../../widget/page_route_builder_widget.dart';
+import '../contact/contact_list_page.dart';
+import '../gallery/gallery_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Isi dari halaman awal berupa icon menu
     return GridView.builder(
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
@@ -14,7 +18,7 @@ class MenuPage extends StatelessWidget {
         itemBuilder: (context, index) => _choiceMenu(context, index));
   }
 
-  _choiceMenu(BuildContext context, int index) {
+  _choiceMenu(context, index) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,16 +33,34 @@ class MenuPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Icon(iconsList[index].icon,
                       color: Colors.amberAccent, size: 50))),
-          onTap: () {},
+          onTap: () {
+            if (index == 7) {
+              _goToContactListPage(context);
+            } else if (index == 8) {
+              _goToGalleryPage(context);
+            }
+          },
         ),
         const SizedBox(height: 8.0),
         Container(
             alignment: Alignment.bottomCenter,
-            child: Text(
-              iconsList[index].namaIcon,
-              textAlign: TextAlign.center,
-            )),
+            child:
+                Text(iconsList[index].namaIcon, textAlign: TextAlign.center)),
       ],
     );
   }
+}
+
+/// Navigasi ke halaman gallery
+_goToGalleryPage(context) {
+  final route = PageRouteBuilderPage(
+      page: const GalleryPage(), routeName: 'Gallery Page');
+  Navigator.of(context).push(route);
+}
+
+/// Navigasi ke halama kontak list
+_goToContactListPage(context) {
+  final route = PageRouteBuilderPage(
+      page: const ContactListPage(), routeName: 'Contact List Page');
+  Navigator.of(context).push(route);
 }

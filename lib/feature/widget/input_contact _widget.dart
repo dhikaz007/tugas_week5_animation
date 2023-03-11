@@ -10,12 +10,12 @@ class InputContactWidget extends StatelessWidget {
   final ValueChanged<String> onFieldSubmitted;
   const InputContactWidget(
       {super.key,
-        required this.keyboardType,
-        this.inputFormatters,
-        required this.prefixIcon,
-        required this.label,
-        required this.hintText,
-        required this.onFieldSubmitted});
+      required this.keyboardType,
+      this.inputFormatters,
+      required this.prefixIcon,
+      required this.label,
+      required this.hintText,
+      required this.onFieldSubmitted});
 
   @override
   Widget build(BuildContext context) {
